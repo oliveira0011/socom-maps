@@ -533,8 +533,9 @@ angular.module('socom-maps', [])
                         minZoom: 11
                     });
                     console.log('adding compass control');
-                    L.control.compass().addTo($scope.map.map);
-                    L.DomEvent.addListener(googleLayerSattelite, 'load', this.startWatch, this);
+                    var compass = L.control.compass();
+                    compass.addTo($scope.map.map);
+                    compass.setLayer(googleLayerSattelite);
                     console.log('map ready');
                     $scope.onCreate({map: $scope.map});
                     $scope.map.map.on('click', function (e) {
