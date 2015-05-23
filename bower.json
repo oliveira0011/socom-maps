@@ -1,6 +1,5 @@
 {
   	"name": "socom-maps",
-  	"version": "0.0.1",
 	"main": [
     	"socom-maps.js"
 	],
@@ -9,7 +8,7 @@
     	"ionic": "1.0.0",
 	    "leaflet": "0.7.3",
 	    "leaflet.markercluster":"0.4.0",    
-	    "socom-maps.view-mode":"0.0.2",
+	    "socom-maps.view-mode":"0.0.2"
   	},
   	"license": "MIT",
 	"ignore": ["./!(socom-maps.js)"]
