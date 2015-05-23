@@ -569,7 +569,7 @@ angular.module('socom-maps', [])
                     centerOnCurrentLocation();
                 }
 
-                if (document.readyState === "complete") {
+                if (document.readyState === "complete" || document.readyState === "interactive") {
                     initialize();
                 }
                 document.addEventListener("deviceready", function () {
