@@ -1,0 +1,31 @@
+{
+  "name": "socom-maps",
+  "main": [
+    "socom-maps.js"
+  ],
+  "dependencies": {
+    "angular": "1.3.13",
+    "ionic": "1.0.0",
+    "leaflet": "0.7.3",
+    "socom-maps.view-mode": "0.0.3",
+    "socom-maps.compass": "0.0.3",
+    "leaflet.markercluster": "0.4.0"
+  },
+  "license": "MIT",
+  "ignore": [
+    "./!(socom-maps.js)",
+    "node_modules",
+    "bower_components"
+  ],
+  "homepage": "https://github.com/oliveira0011/socom-maps",
+  "version": "0.0.11",
+  "_release": "0.0.11",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.11",
+    "commit": "d813b9d395e0e8a7c68c53d21ce96891cc754b5a"
+  },
+  "_source": "git://github.com/oliveira0011/socom-maps.git",
+  "_target": "~0.0.7",
+  "_originalSource": "socom-maps"
+}
