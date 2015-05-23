@@ -1,6 +1,8 @@
 
 var scripts = document.getElementsByTagName("script");
 var templatePath = scripts[scripts.length-1].src.replace('socom-maps.js', 'enemies_modal.html');
+var squadsPath = scripts[scripts.length-1].src.replace('socom-maps.js', 'img/squads/');
+var specializationPath = scripts[scripts.length-1].src.replace('socom-maps.js', 'img/specializations/');
 angular.module('socom-maps', [])
     .factory('Direction', function () {
 
@@ -136,7 +138,7 @@ angular.module('socom-maps', [])
         };
         return Map;
     })
-    .factory('Operator', function (Specialization) {
+    .factory('Operator', function () {
 
         /**
          * Constructor, with class name
@@ -146,7 +148,7 @@ angular.module('socom-maps', [])
             this.nickname = nickname;
             this.latitude = latitude;
             this.longitude = longitude;
-            this.specialization = Specialization.get(specialization); //
+            this.specialization = specialization;
         }
 
         return Operator;
@@ -178,23 +180,24 @@ angular.module('socom-maps', [])
     .factory('Specialization', function () {
 
         var specialization = {
-            INFANTRY: "img/infantry.png",
-            MEDIC: "img/medic.png",
-            MAINTENANCE: "img/maintenance.png",
-            RECON: "img/recon.png",
-            SPECIAL_FORCE: "img/special_force.png",
-            SIGNALS: "img/signals.png",
-            SOF: "img/sof.png",
-            ENGINEER: "img/engineer.png",
-            RADAR: "img/radar.png",
-            TRANSPORTATION: "IMG/TRANSPORTATION.PNG",
-            ARMOVRED: "img/armovred.png",
-            ANTI_TANK: "img/anti_tank.png",
-            MORTAR: "img/mortar.png",
-            GUNNER: "img/mortar.png",
-            LOADER: "img/mortar.png",
-            ARTELLERY: "img/artellery.png",
-            BRIDGING: "img/bridging.png",
+            INFANTRY: "infantry.png",
+            MEDIC: "medic.png",
+            MAINTENANCE: "maintenance.png",
+            RECON: "recon.png",
+            SPECIAL_FORCE: "special_force.png",
+            SIGNALS: "signals.png",
+            SOF: "sof.png",
+            ENGINEER: "engineer.png",
+            RADAR: "radar.png",
+            TRANSPORTATION: "transportation.png",
+            ARMOVRED: "armovred.png",
+            ANTI_TANK: "anti_tank.png",
+            MORTAR: "mortar.png",
+            GUNNER: "mortar.png",
+            LOADER: "mortar.png",
+            ARTELLERY: "artellery.png",
+            BRIDGING: "bridging.png",
+            NOSPEC: "no_spec"
 
         };
 
@@ -266,7 +269,7 @@ angular.module('socom-maps', [])
                                 id: operator.username,
                                 //icon: new L.Icon({iconUrl: 'img/skull_red.png'}),
                                 icon: new L.DivIcon({
-                                    html: "<div class='pin' style='background: #219710 url(\"img/xpto.png\") no-repeat bottom' nickname='" + operator.nickname + "'></div>",
+                                    html: "<div class='pin' style='background: #219710 url(\"" + specializationPath + operator.specialization + "\") no-repeat center;background-position-y: 15px;' nickname='" + operator.nickname + "'></div>",
                                     iconSize: new L.Point(0, 0)
                                 }),
                                 title: 'Inimigo nas redondezas'
@@ -279,14 +282,14 @@ angular.module('socom-maps', [])
                                 {
                                     iconCreateFunction: function (cluster) {
                                         var childCount = $scope.map.getSquad(squadId).operatorsCount();
-                                        var srcicon =
-                                            childCount == 1 || childCount == 2 ? 'fire_maneuver' :
+                                        var srcicon = squadsPath +
+                                            (childCount == 1 || childCount == 2 ? 'fire_maneuver' :
                                                 childCount > 2 && childCount < 6 ? 'fireteam' :
                                                     childCount > 5 && childCount < 11 ? 'patrol' :
                                                         childCount > 9 && childCount < 14 ? 'squad' :
-                                                            childCount >= 14 ? 'platoon' : undefined;
+                                                            childCount >= 14 ? 'platoon' : undefined);
                                         return new L.DivIcon({
-                                            html: "<div class='pin' style='background: #219710 url(\"img/squads/" + srcicon + ".png\") no-repeat bottom'></div><div class='pulse'></div>",
+                                            html: "<div class='pin' style='background: #219710 url(\"" + srcicon + ".png\") no-repeat bottom'></div><div class='pulse'></div>",
                                             iconSize: new L.Point(0, 0)
                                         });
                                     },

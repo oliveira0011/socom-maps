@@ -25,11 +25,8 @@
 
     <script type="text/javascript">
         angular.module('xpto', ['ionic', 'socom-maps'])
-                .controller('xptoController', function ($scope, Squad, Operator) {
-                    console.log(2);
+                .controller('xptoController', function ($scope, Squad, Operator, Specialization) {
                     $scope.mapCreated = function (map) {
-                        console.log(1);
-                        console.log(map);
                         $scope.map = map;
                         $scope.map.addSquad(new Squad(1));
                         $scope.map.setPlayableArea(
@@ -45,8 +42,8 @@
                                     new L.LatLng(39.749603, -8.81188)
                                 ]
                         );
-                        console.log($scope.map);
-                        $scope.map.addOperator(1, new Operator(1, 1, 39.73669629664551, -8.727478981018065));
+                        $scope.map.addOperator(1, new Operator(1, 1, 39.73669629664551, -8.727478981018065, Specialization.TRANSPORTATION));
+                        $scope.map.addOperator(1, new Operator(1, 12, 39.74669629664551, -8.727478981018065, Specialization.MEDIC));
                     }
                 });
     </script>
