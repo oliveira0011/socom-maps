@@ -2,7 +2,7 @@
   "name": "socom-maps",
   "main": ["socom-maps.js"],
   "dependencies": {
-    "angular": "1.3.13",
+    "angular": "1.3.15",
     "ionic": "1.0.0",
     "leaflet": "0.7.3",
     "socom-maps.view-mode": "0.0.3",
@@ -13,6 +13,7 @@
   "ignore": [
     "./!(socom-maps.js)",
     "node_modules",
-    "bower_components"
+    "bower_components",
+    "minimal_example"
   ]
 }
