@@ -528,11 +528,13 @@ angular.module('socom-maps', [])
                     });
                     $scope.control.setPosition('bottomright');
                     $scope.control.addTo($scope.map.map);
-                    $scope.map.map.addControl(new L.Control.Compass());
                     $scope.map.map.addLayer(googleLayerSattelite, {
                         maxZoom: 22,
                         minZoom: 11
                     });
+                    console.log('adding compass control');
+                    L.control.compass().addTo($scope.map.map);
+                    L.DomEvent.addListener(googleLayerSattelite, 'load', this.startWatch, this);
                     console.log('map ready');
                     $scope.onCreate({map: $scope.map});
                     $scope.map.map.on('click', function (e) {
