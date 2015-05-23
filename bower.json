@@ -1,7 +1,7 @@
 {
   "name": "socom-maps",
   "version": "0.0.1",
-  "main": "socom-maps.js",
+  "main": ["socom-maps.js"],
   "dependencies": {
     "angular": "1.4.0-rc.2",
     "ionic": "1.0.0",
