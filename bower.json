@@ -10,7 +10,11 @@
 		"socom-maps.view-mode": "0.0.2"
 	},
 	"license": "MIT",
-	"ignore": [],
+	"ignore": [
+		"./!(socom-maps.js)",
+    	"node_modules",
+    	"bower_components"
+	],
 	"resolutions": {
 		"angular": "1.4.0-rc.2"
 	}
