@@ -1,3 +1,6 @@
+
+var scripts = document.getElementsByTagName("script");
+var templatePath = scripts[scripts.length-1].src.replace('socom-maps.js', 'enemies_modal.html');
 angular.module('socom-maps', [])
     .factory('Direction', function () {
 
@@ -387,12 +390,14 @@ angular.module('socom-maps', [])
                     }
                     return inside;
                 };
+
                 var onEnemiesPopupSelected = function (value) {
                     $scope.enemiesNumber = value;
                     modal.hide();
                     if ($scope.enemiesNumber !== undefined) {
+                        console.log(templatePath);
                         createPopup([{
-                                templateUrl: 'templates/enemies_modal.html', options: {
+                                templateUrl: templatePath, options: {
                                     title: 'Sighted Enemies Direction',
                                     btns: [[
                                         {
@@ -469,7 +474,7 @@ angular.module('socom-maps', [])
                                         modal.hide();
                                         modal.remove();
                                     },
-                                    stylesheets: [{href: 'css/directions.css', type: 'text/css'}]
+                                    templateClass: 'directions'
                                 }
                             }],
                             function (_modal) {
@@ -535,14 +540,14 @@ angular.module('socom-maps', [])
                     console.log('adding compass control');
                     var compass = L.control.compass();
                     compass.addTo($scope.map.map);
-                    compass.setLayer(googleLayerSattelite);
                     console.log('map ready');
                     $scope.onCreate({map: $scope.map});
                     $scope.map.map.on('click', function (e) {
                             var latLng = new L.LatLng(e.latlng.lat, e.latlng.lng);
                             if (insidePlayableArea($scope.map, latLng)) {
+                                //scr=scr[scr.length-1]
                                 createPopup([{
-                                        templateUrl: 'templates/enemies_modal.html', options: {
+                                        templateUrl: templatePath, options: {
                                             title: 'Sighted Enemies Number',
                                             btns: [[
                                                 {label: '1', value: '1'},
@@ -557,7 +562,7 @@ angular.module('socom-maps', [])
                                                 {label: 'Cancel', className: 'btn-direction-cancel'}
                                             ]],
                                             onclick: onEnemiesPopupSelected,
-                                            stylesheets: [{href: 'css/enemies.css', type: 'text/css'}]
+                                            templateClass: 'enemies'
                                         }
                                     }],
                                     function (_modal) {
@@ -570,14 +575,17 @@ angular.module('socom-maps', [])
                     centerOnCurrentLocation();
                 }
 
-                if (document.readyState === "complete" || document.readyState === "interactive") {
-                    initialize();
+                if (typeof cordova !== 'undefined') {
+                    document.addEventListener("deviceready", function () {
+                        var so = cordova.plugins.screenorientation;
+                        so.setOrientation('landscape');
+                        initialize();
+                    }, false);
+                } else {
+                    if (document.readyState === "complete" || document.readyState === "interactive") {
+                        initialize();
+                    }
                 }
-                document.addEventListener("deviceready", function () {
-                    var so = cordova.plugins.screenorientation;
-                    so.setOrientation('landscape');
-                    initialize();
-                }, false);
             }
         }
     }
