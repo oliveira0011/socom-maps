@@ -184,20 +184,19 @@ angular.module('socom-maps', [])
             MEDIC: "medic.png",
             MAINTENANCE: "maintenance.png",
             RECON: "recon.png",
-            SPECIAL_FORCE: "special_force.png",
             SIGNALS: "signals.png",
             SOF: "sof.png",
             ENGINEER: "engineer.png",
             RADAR: "radar.png",
             TRANSPORTATION: "transportation.png",
-            ARMOVRED: "armovred.png",
+            ARMOUR: "armour.png",
             ANTI_TANK: "anti_tank.png",
             MORTAR: "mortar.png",
             GUNNER: "mortar.png",
             LOADER: "mortar.png",
             ARTELLERY: "artellery.png",
             BRIDGING: "bridging.png",
-            NOSPEC: "no_spec"
+            NO_SPEC: "no_spec.png"
 
         };
 
