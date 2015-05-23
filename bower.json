@@ -9,6 +9,5 @@
 		"leaflet.markercluster": "0.4.0",
 		"socom-maps.view-mode": "0.0.2"
 	},
-	"license": "MIT",
-	"ignore": "./!(socom-maps.js)"
+	"license": "MIT"
 }
