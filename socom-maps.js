@@ -1,6 +1,7 @@
 
 var scripts = document.getElementsByTagName("script");
 var templatePath = scripts[scripts.length-1].src.replace('socom-maps.js', 'enemies_modal.html');
+var squadsPath = scripts[scripts.length-1].src.replace('socom-maps.js', 'img/squads/');
 angular.module('socom-maps', [])
     .factory('Direction', function () {
 
@@ -279,14 +280,14 @@ angular.module('socom-maps', [])
                                 {
                                     iconCreateFunction: function (cluster) {
                                         var childCount = $scope.map.getSquad(squadId).operatorsCount();
-                                        var srcicon =
-                                            childCount == 1 || childCount == 2 ? 'fire_maneuver' :
+                                        var srcicon = squadsPath +
+                                            (childCount == 1 || childCount == 2 ? 'fire_maneuver' :
                                                 childCount > 2 && childCount < 6 ? 'fireteam' :
                                                     childCount > 5 && childCount < 11 ? 'patrol' :
                                                         childCount > 9 && childCount < 14 ? 'squad' :
-                                                            childCount >= 14 ? 'platoon' : undefined;
+                                                            childCount >= 14 ? 'platoon' : undefined);
                                         return new L.DivIcon({
-                                            html: "<div class='pin' style='background: #219710 url(\"img/squads/" + srcicon + ".png\") no-repeat bottom'></div><div class='pulse'></div>",
+                                            html: "<div class='pin' style='background: #219710 url(\"" + srcicon + ".png\") no-repeat bottom'></div><div class='pulse'></div>",
                                             iconSize: new L.Point(0, 0)
                                         });
                                     },
