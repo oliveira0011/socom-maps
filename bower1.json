@@ -1,7 +1,9 @@
 {
   	"name": "socom-maps",
   	"main": [
-	    "socom-maps.js"
+	    "socom-maps.js",
+		"directions.css",
+		"enemies.css",
 	],
   	"dependencies": {
     	"leaflet": "0.7.3"
