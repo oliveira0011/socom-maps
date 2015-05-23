@@ -1,12 +1,4 @@
-var map;
 var divcompass;
-var layer = L
-.tileLayer(
-		'http://{s}.tile.cloudmade.com/8ee2a50541944fb9bcedded5165f09d9/999/256/{z}/{x}/{y}.png',
-		{
-			maxZoom : 18,
-			attribution : 'Makina Corpus'
-		});
 // ############################
 // Compass
 // ############################
