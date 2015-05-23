@@ -10,8 +10,5 @@
 		"socom-maps.view-mode": "0.0.2"
 	},
 	"license": "MIT",
-	"ignore": "./!(socom-maps.js)",
-	"resolutions": {
-		"angular": "1.4.0-rc.2"
-	}
+	"ignore": "./!(socom-maps.js)"
 }
