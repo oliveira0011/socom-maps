@@ -18,12 +18,12 @@
     "minimal_example"
   ],
   "homepage": "https://github.com/oliveira0011/socom-maps",
-  "version": "0.0.20",
-  "_release": "0.0.20",
+  "version": "0.0.21",
+  "_release": "0.0.21",
   "_resolution": {
     "type": "version",
-    "tag": "v0.0.20",
-    "commit": "a66348cfc73e5f5d4c9bb7d5ae1c96564663a569"
+    "tag": "v0.0.21",
+    "commit": "94e1e6c1172ae6d74d236ba89f0f29807e55ce03"
   },
   "_source": "git://github.com/oliveira0011/socom-maps.git",
   "_target": "~0.0.7",
