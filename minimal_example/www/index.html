@@ -25,7 +25,7 @@
 
     <script type="text/javascript">
         angular.module('xpto', ['ionic', 'socom-maps'])
-                .controller('xptoController', function ($scope, Squad, Operator, Specialization) {
+                .controller('xptoController', function ($scope, Squad, Operator, Specialization, Hostile) {
                     $scope.mapCreated = function (map) {
                         $scope.map = map;
                         $scope.map.addSquad(new Squad(1));
@@ -44,6 +44,10 @@
                         );
                         $scope.map.addOperator(1, new Operator(1, 1, 39.73669629664551, -8.727478981018065, Specialization.TRANSPORTATION));
                         $scope.map.addOperator(1, new Operator(1, 12, 39.74669629664551, -8.727478981018065, Specialization.MEDIC));
+                        $scope.$on('enemyDetected', function (event, hostile) {
+                            console.log(hostile);
+                            $scope.map.addHostile(new Hostile(hostile.latitude, hostile.longitude, hostile.enemiesNumber, hostile.direction));
+                        });
                     }
                 });
     </script>

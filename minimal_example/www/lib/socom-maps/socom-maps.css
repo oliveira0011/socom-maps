@@ -213,6 +213,7 @@ map {
 }
 
 .directions .btn-direction {
+    border: none;
     height: 100%;
     width: 100%;
     /*border: 1px solid whitesmoke;*/
@@ -227,7 +228,7 @@ map {
 .directions .btn-direction-ne:after, .directions .btn-direction-n:after, .directions .btn-direction-nw:after,
 .directions .btn-direction-e:after, .directions .btn-direction-c:after, .directions .btn-direction-w:after,
 .directions .btn-direction-se:after, .directions .btn-direction-s:after, .directions .btn-direction-sw:after {
-    background: url("../../img/arrow2.png") no-repeat center;
+    background: url("img/arrow.png") no-repeat center;
     background-size: 80px;
 }
 
@@ -238,7 +239,7 @@ map {
 .directions .btn-direction-se:active:after, .directions .btn-direction-s:active:after, .directions .btn-direction-sw:active:after,
 .directions .btn-direction-se:hover:after, .directions .btn-direction-s:hover:after, .directions .btn-direction-sw:hover:after,
 {
-    background: url("../../img/arrow2_hover.png") no-repeat center;
+    background: url("img/arrow_hover.png") no-repeat center;
     background-size: 80px;
 }
 
@@ -341,6 +342,7 @@ map {
     border-radius: 0;
     margin: 3px;
     background: #000;
+    border: none;
 }
 
 .enemies .btn-direction:active, .enemies .btn-direction:hover {
