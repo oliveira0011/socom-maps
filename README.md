@@ -1,6 +1,6 @@
 # SOCOM MAPS
 
-Directive that allows the manipullation of a google maps and leaflet based map.
+Directive that allows the manipulation of a google maps and leaflet based map.
 This entity is intended to be used on a AirSoft project.
 
 ![logo]
