@@ -590,7 +590,7 @@ angular.module('socom-maps', [])
                         ).addTo($scope.map.map);
                         addMarkerEvents($scope.map.map, $scope.myLocation, "Encontra-se aqui1", true);
                     }
-                    $rootScope.$broadcast('userPositionUpdated', $scope.myLocation);
+                    $rootScope.$broadcast('userPositionUpdated', {latitude: pos.coords.latitude, longitude: pos.coords.longitude});
                     if ($scope.viewMode !== undefined) {
                         $scope.viewMode.setOperator($scope.myLocation.getLatLng());
                     }
