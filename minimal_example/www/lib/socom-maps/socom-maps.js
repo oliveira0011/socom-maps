@@ -329,7 +329,7 @@ angular.module('socom-maps', [])
                                     squad: markerGroups[squadId]
                                 });
                                 $scope.viewMode.addTo($scope.map.map);
-
+                                $scope.map.map.addControl(L.control.zoom({position:'bottomleft'}));
                             }
                             markerGroups[squadId].addLayer(marker);
                             markerGroups[squadId].addTo($scope.layers[squadId]);
@@ -601,7 +601,7 @@ angular.module('socom-maps', [])
                     var mapOptions = {
                         center: new L.LatLng(43.07493, -89.381388),
                         zoom: 15,
-                        zoomControl: true,
+                        zoomControl: false,
                         attributionControl: false,
                         maxZoom: 22,
                         minZoom: 11
