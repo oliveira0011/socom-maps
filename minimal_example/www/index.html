@@ -3,9 +3,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title></title>
-    <link rel="stylesheet" href="lib/ionic/css/ionic.min.css" type="text/css"><link>
+    <link rel="stylesheet" href="lib/ionic/css/ionic.min.css" type="text/css">
+    <link>
     <link href="lib/leaflet/dist/leaflet.css" rel="stylesheet"/>
     <link href="lib/leaflet.markercluster/dist/MarkerCluster.Default.css" rel="stylesheet"/>
+    <link href="lib/leaflet-draw/dist/leaflet.draw.css" rel="stylesheet"/>
     <link href="lib/socom-maps/socom-maps.css" rel="stylesheet"/>
     <link href="lib/socom-maps.compass/socom-compass.css" rel="stylesheet"/>
     <link href="lib/socom-maps.view-mode/socom-maps-viewmode.css" rel="stylesheet"/>
@@ -16,6 +18,7 @@
     <!-- LEAFLET IMPORTS-->
     <script src="lib/leaflet/dist/leaflet.js" type="text/javascript"></script>
     <script src="lib/leaflet.markercluster/dist/leaflet.markercluster.js" type="text/javascript"></script>
+    <script src="lib/leaflet-draw/dist/leaflet.draw.js" type="text/javascript"></script>
     <!-- SOCOM IMPORTS-->
     <script src="lib/socom-maps/socom-maps.js" type="text/javascript"></script>
     <script src="lib/socom-maps/leaflet-google.js" type="text/javascript"></script>
@@ -49,13 +52,23 @@
                             $scope.map.addHostile(new Hostile(hostile.latitude, hostile.longitude, hostile.enemiesNumber, hostile.direction));
                         });
                     }
+                })
+                .controller('xptoDrawController', function ($scope, Squad, Operator, Specialization, Hostile) {
+                    $scope.mapCreated = function (map) {
+                        $scope.map = map;
+                    }
                 });
     </script>
 </head>
-<body ng-app="xpto" ng-controller="xptoController" data-tap-disabled="true">
+<body ng-app="xpto" data-tap-disabled="true">
 <ion-nav-view>
     <ion-content>
-        <map on-create="mapCreated(map)"></map>
+        <div ng-controller="xptoDrawController" style="width: 50%;float: right">
+            <map mode="DRAW" on-create="mapCreated(map)"></map>
+        </div>
+        <div ng-controller="xptoController" style="width: 50%">
+            <map mode="OPERATOR" on-create="mapCreated(map)"></map>
+        </div>
     </ion-content>
 </ion-nav-view>
 <style>
