@@ -330,7 +330,6 @@ angular.module('socom-maps', [])
                                 });
                                 $scope.viewMode.addTo($scope.map.map);
                                 $scope.map.map.addControl(L.control.zoom({position:'bottomleft'}));
-                                $scope.map.map.addControl(L.control.zoom({position:'bottomleft'}));
                             }
                             markerGroups[squadId].addLayer(marker);
                             markerGroups[squadId].addTo($scope.layers[squadId]);
