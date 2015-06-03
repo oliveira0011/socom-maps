@@ -350,7 +350,7 @@ angular.module('socom-maps', [])
                 var removeHostileMarker = function (hostile) {
                     //console.log(hostileMarkers);
                     $scope.map.map.removeLayer(hostileMarkers[hostile.id]);
-                    var hostileRemoved = operatorsMarkers[hostile.id];
+                    var hostileRemoved = hostileMarkers[hostile.id];
                     delete hostileMarkers[hostile.id];
                     $rootScope.$broadcast('hostileRemoved', hostileRemoved);
                     //console.log(hostileMarkers);
