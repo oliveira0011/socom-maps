@@ -29,7 +29,7 @@
 
     <script type="text/javascript">
         angular.module('xpto', ['ionic', 'socom-maps', 'hudModule'])
-                .controller('xptoController', function ($scope, Squad, Operator, Specialization, Hostile) {
+                .controller('xptoController', function ($scope, Squad, Operator, Specialization, Hostile, CoordinatesConverter) {
                     $scope.mapCreated = function (map) {
                         $scope.map = map;
                         $scope.map.addSquad(new Squad(1));
