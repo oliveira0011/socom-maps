@@ -747,7 +747,6 @@ angular.module('socom-maps', [])
                         }
                         return json;
                     }
-
                     $scope.map.map.addControl(new L.Control.Search({
                         callData: googleGeocoding,
                         filterJSON: filterJSONCall,
