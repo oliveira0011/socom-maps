@@ -410,7 +410,9 @@ angular.module('socom-maps', [])
                     var coordinates = new L.LatLng(operator.latitude, operator.longitude);
                     if (insidePlayableArea($scope.map, coordinates)) {
                         if (operatorsMarkers[operator.username] !== undefined) {
+                            markerGroups[squadId].removeLayer(operatorsMarkers[operator.username]);
                             operatorsMarkers[operator.username].setLatLng(coordinates);
+                            markerGroups[squadId].addLayer(operatorsMarkers[operator.username]);
                             $rootScope.$broadcast('operatorUpdated', operator);
                         } else {
                             var marker = new L.Marker(coordinates,
@@ -459,6 +461,9 @@ angular.module('socom-maps', [])
                             markerGroups[squadId].addLayer(marker);
                             markerGroups[squadId].addTo($scope.layers[squadId]);
                             operatorsMarkers[operator.username] = marker;
+                            if ($scope.viewMode !== undefined) {
+                                $scope.viewMode.setSquad(markerGroups[squadId]);
+                            }
                             $rootScope.$broadcast('operatorAdded', operator);
                         }
                     }
