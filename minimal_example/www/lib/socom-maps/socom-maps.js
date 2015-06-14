@@ -410,7 +410,9 @@ angular.module('socom-maps', [])
                     var coordinates = new L.LatLng(operator.latitude, operator.longitude);
                     if (insidePlayableArea($scope.map, coordinates)) {
                         if (operatorsMarkers[operator.username] !== undefined) {
+                            markerGroups[squadId].removeLayer(operatorsMarkers[operator.username]);
                             operatorsMarkers[operator.username].setLatLng(coordinates);
+                            markerGroups[squadId].addLayer(operatorsMarkers[operator.username]);
                             $rootScope.$broadcast('operatorUpdated', operator);
                         } else {
                             var marker = new L.Marker(coordinates,
@@ -449,16 +451,21 @@ angular.module('socom-maps', [])
                                 $scope.layers[squadId] = new L.LayerGroup().addTo($scope.map.map);
                                 $scope.control.addOverlay($scope.layers[squadId], "Team");
 
-                                $scope.viewMode = L.control.viewmode({
-                                    operator: $scope.myLocation ? $scope.myLocation.getLatLng() : undefined,
-                                    squad: markerGroups[squadId]
-                                });
-                                $scope.viewMode.addTo($scope.map.map);
+                                if ($scope.mode === 'OPERATOR') {
+                                    $scope.viewMode = L.control.viewmode({
+                                        operator: $scope.myLocation ? $scope.myLocation.getLatLng() : undefined,
+                                        squad: markerGroups[squadId]
+                                    });
+                                    $scope.viewMode.addTo($scope.map.map);
+                                }
                                 $scope.map.map.addControl(L.control.zoom({position: 'bottomleft'}));
                             }
                             markerGroups[squadId].addLayer(marker);
                             markerGroups[squadId].addTo($scope.layers[squadId]);
                             operatorsMarkers[operator.username] = marker;
+                            if ($scope.viewMode !== undefined) {
+                                $scope.viewMode.setSquad(markerGroups[squadId]);
+                            }
                             $rootScope.$broadcast('operatorAdded', operator);
                         }
                     }
@@ -772,11 +779,11 @@ angular.module('socom-maps', [])
                     //console.log('instantiating maps controller');
                     var mapOptions = {
                         center: new L.LatLng(43.07493, -89.381388),
-                        zoom: $scope.mode === 'OPERATOR' ? 15 : 5,
+                        zoom: $scope.mode === 'OPERATOR' || $scope.mode === 'COMSYS' ? 15 : 5,
                         zoomControl: false,
                         attributionControl: false,
                         maxZoom: 22,
-                        minZoom: $scope.mode === 'OPERATOR' ? 8 : 0
+                        minZoom: $scope.mode === 'OPERATOR' || $scope.mode === 'COMSYS' ? 8 : 0
                     };
                     $scope.map = new Map(
                         new L.Map($element[0], mapOptions),
@@ -804,7 +811,7 @@ angular.module('socom-maps', [])
                         maxZoom: 22,
                         minZoom: 11
                     });
-                    if ($scope.mode === 'OPERATOR') {
+                    if ($scope.mode === 'OPERATOR' || $scope.mode == 'COMSYS') {
                         var compass = L.control.compass();
                         compass.addTo($scope.map.map);
                         //console.log('map ready');
