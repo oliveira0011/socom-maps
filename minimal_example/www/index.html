@@ -234,7 +234,7 @@
                             zoneCoordinates.push(new L.LatLng(converter.getLatitude(), converter.getLongitude()));
                         });
                         $scope.map.setGameZone(coordinates);
-                        $scope.map.addZone(1, 'xpto', zoneCoordinates);
+                        $scope.map.addZone(1, 'xpto', zoneCoordinates, "#FFF");
                         $scope.map.addSquad(new Squad(1));
                         $scope.map.addOperator(1, new Operator(1, 1, 39.73669629664551, -8.727478981018065, Specialization.TRANSPORTATION));
                         $scope.map.addOperator(1, new Operator(1, 12, 39.74669629664551, -8.727478981018065, Specialization.MEDIC));
