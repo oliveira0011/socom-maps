@@ -34,7 +34,6 @@ angular.module('starter.controllers', [])
     });
 
     $ionicUser.identify(user);
-    
+
   }
 })
-
