@@ -202,7 +202,7 @@ angular.module('socom-maps', [])
 
         Zone.prototype.setPoints = function (zonepoints, color) {
             var pointsAux = [];
-            this.color = color === undefined ? "#ffffff" : color;
+            this.color = (color === undefined || zone.color === "" ? "#ffffff" : color);
             for (var i = 0; i < zonepoints.length; i++) {
                 var point = zonepoints[i];
                 if (!(point instanceof L.LatLng)) {
@@ -624,7 +624,7 @@ angular.module('socom-maps', [])
                 };
                 var drawZone = function (zone) {
                     console.log(zone.color);
-                    var zoneArea = new L.Polygon(zone.points, {color: zone.color === undefined ? 'red' : zone.color}).addTo($scope.map.map);
+                    var zoneArea = new L.Polygon(zone.points, {color: zone.color === undefined || zone.color === "" ? 'red' : zone.color}).addTo($scope.map.map);
                     zonesMarkers[zone.id] = zoneArea;
                     $scope.control.addOverlay(zoneArea, zone.name);
                 };
